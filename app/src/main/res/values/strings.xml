@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">minsoung-CountBook</string>
+    <string name="main_name">CountBook</string>
+    <string name="action_add">add_icon</string>
+    <string name="main_empty">Tap the Add button on the top right corner to start a counter!</string>
 </resources>
