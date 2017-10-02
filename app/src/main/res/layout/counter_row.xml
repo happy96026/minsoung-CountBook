@@ -12,10 +12,10 @@
             android:id="@+id/decrement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ripple_effect"
             app:srcCompat="@mipmap/ic_decrement"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
+            android:background="@drawable/ripple_effect"
             android:layout_marginStart="12dp" />
 
         <ImageButton
@@ -40,7 +40,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/descriptor"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -52,7 +52,7 @@
                     android:textColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/count"
+                    android:id="@+id/current_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
