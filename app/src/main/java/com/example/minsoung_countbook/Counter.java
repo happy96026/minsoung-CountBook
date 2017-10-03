@@ -3,9 +3,13 @@ package com.example.minsoung_countbook;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * This class represents a counter and holds all the information and methods
+ * required to implement a counter such as name, date, value, name, comment
+ * increment, decrement and reset.
+ */
 public class Counter implements Serializable {
 
     private String name;
@@ -13,15 +17,6 @@ public class Counter implements Serializable {
     private int initial_value;
     private int current_value;
     private Date date;
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
     private int index;
 
     public Counter(String name, int initial_value, String comment, int index) {
@@ -73,6 +68,14 @@ public class Counter implements Serializable {
         }
     }
 
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
     public String date_toString() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(date);
@@ -90,6 +93,10 @@ public class Counter implements Serializable {
         } else {
             throw new NegativeNumber("Cannot Increment a negative Number!");
         }
+    }
+
+    public void reset() {
+        current_value = initial_value;
     }
 }
 

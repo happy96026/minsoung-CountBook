@@ -12,6 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * RecordActivity is used to display the information of a single
+ * counter. This class also allows the user to edit the information
+ * of a counter except for the date and to delete the counter
+ * permanently.
+ */
 public class RecordActivity extends AppCompatActivity {
 
     private Counter counter;

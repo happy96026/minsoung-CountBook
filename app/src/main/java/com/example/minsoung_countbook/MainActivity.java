@@ -29,6 +29,14 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+
+/**
+ * MainActivity class is responsible for displaying all the counter's
+ * value. It also allows for adding a Counter object
+ * to the array list. Although delete load and save is not initiated in
+ * MainActivity, the class contains the logic for deleting a counter from
+ * array list and saving information to a file using GSON.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String FILENAME = "file.sav";
