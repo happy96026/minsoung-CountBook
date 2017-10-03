@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String FILENAME = "file.sav";
     private ArrayList<Counter>  counters = new ArrayList<Counter>();
-    CounterAdapter counterAdapter;
-    ListView       counterListView;
+    private CounterAdapter counterAdapter;
+    private ListView       counterListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle(getString(R.string.main_name));
+        setTitle(getString(R.string.app_name));
     }
 
     @Override

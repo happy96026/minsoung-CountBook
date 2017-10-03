@@ -1,5 +1,6 @@
 package com.example.minsoung_countbook;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,10 +27,6 @@ import java.util.List;
  */
 public class CounterAdapter extends ArrayAdapter<Counter> {
 
-    private Counter      counter;
-    private View         counterView;
-    private MainActivity activity;
-
     public CounterAdapter(Context context, List<Counter> counters) {
         super(context, R.layout.counter_row, counters);
     }
@@ -37,9 +34,9 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater counterInflater = LayoutInflater.from(getContext());
-        counter     = getItem(position);
-        counterView = counterInflater.inflate(R.layout.counter_row, parent, false);
-        activity    = (MainActivity)  counterView.getContext();
+        final Counter counter     = getItem(position);
+        final View counterView = counterInflater.inflate(R.layout.counter_row, parent, false);
+        final MainActivity activity    = (MainActivity)  counterView.getContext();
 
         TextView    name       = (TextView)   counterView.findViewById(R.id.name);
         TextView    date       = (TextView)   counterView.findViewById(R.id.date);
@@ -51,14 +48,6 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
         date.setText(counter.date_toString());
         value.setText(Integer.toString(counter.getCurrentValue()));
 
-        handle_decrement(decrement);
-        handle_increment(increment);
-        handle_value    (value);
-
-        return counterView;
-    }
-
-    private void handle_decrement(ImageButton decrement) {
         decrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +60,6 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
                 activity.saveInFile();
             }
         });
-    }
-
-    private void handle_increment(ImageButton increment) {
         increment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,9 +68,6 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
                 activity.saveInFile();
             }
         });
-    }
-
-    private void handle_value(TextView value) {
         value.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,5 +106,7 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
                 return true;
             }
         });
+
+        return counterView;
     }
 }
