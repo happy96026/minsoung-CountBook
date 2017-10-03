@@ -1,5 +1,6 @@
 package com.example.minsoung_countbook;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
@@ -50,6 +51,8 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
                     Toast.makeText(getContext(), "Negative numbers are not allowed.", Toast.LENGTH_SHORT).show();
                 }
                 notifyDataSetChanged();
+                MainActivity activity = (MainActivity)  counterView.getContext();
+                activity.saveInFile();
             }
         });
         increment.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +60,8 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
             public void onClick(View v) {
                 counter.increment();
                 notifyDataSetChanged();
+                MainActivity activity = (MainActivity)  counterView.getContext();
+                activity.saveInFile();
             }
         });
         count.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +69,10 @@ public class CounterAdapter extends ArrayAdapter<Counter> {
             public void onClick(View v) {
                 Intent intent = new Intent(counterView.getContext(), RecordActivity.class);
                 intent.putExtra("Counter", counter);
-                counterView.getContext().startActivity(intent);
+                Activity activity = (Activity) counterView.getContext();
+                activity.startActivityForResult(intent, 1);
             }
         });
-
 
         return counterView;
     }

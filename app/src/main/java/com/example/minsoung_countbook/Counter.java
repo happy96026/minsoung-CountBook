@@ -1,10 +1,9 @@
 package com.example.minsoung_countbook;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,12 +18,23 @@ public class Counter implements Serializable {
     private int current_value;
     private Date date;
 
-    public Counter(String name, int initial_value, String comment) {
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    private int index;
+
+    public Counter(String name, int initial_value, String comment, int index) {
         this.name = name;
         this.comment = comment;
         this.initial_value = initial_value;
         current_value = initial_value;
         date = new Date();
+        this.index = index;
     }
 
     public String getName() {
@@ -48,7 +58,7 @@ public class Counter implements Serializable {
     }
 
     public void setInitialValue(int initial_value) throws NegativeNumber {
-        if (initial_value < 0) {
+        if (initial_value >= 0) {
             this.initial_value = initial_value;
         } else {
             throw new NegativeNumber("Cannot set to a negative number!");
@@ -60,7 +70,7 @@ public class Counter implements Serializable {
     }
 
     public void setCurrentValue(int current_value) throws NegativeNumber {
-        if (current_value < 0) {
+        if (current_value >= 0) {
             this.current_value = current_value;
         } else {
             throw new NegativeNumber("Cannot set to a negative number!");
@@ -68,7 +78,7 @@ public class Counter implements Serializable {
     }
 
     public String date_toString() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(date);
     }
 
