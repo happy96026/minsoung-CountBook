@@ -6,10 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by mchoi on 2017-10-02.
- */
-
 public class Counter implements Serializable {
 
     private String name;

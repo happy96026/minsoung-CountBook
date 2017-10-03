@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_weight="0.12"
+        android:text="Would you like to reset this counter?"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/no"
+            android:layout_alignBottom="@+id/no"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:text="no" />
+
+        <Button
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:text="yes" />
+    </LinearLayout>
+
+</LinearLayout>

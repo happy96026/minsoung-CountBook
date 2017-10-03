@@ -6,8 +6,4 @@
         android:id="@+id/delete"
         android:title="Delete" />
 
-    <item
-        android:id="@+id/reset"
-        android:title="Reset" />
-
 </menu>

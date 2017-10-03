@@ -23,15 +23,15 @@ public class RecordActivity extends AppCompatActivity {
         counter = (Counter)getIntent().getSerializableExtra("Counter");
         setTitle(counter.getName());
 
-        final EditText name = (EditText) findViewById(R.id.record_name);
-        final EditText date = (EditText) findViewById(R.id.record_date);
+        final EditText name          = (EditText) findViewById(R.id.record_name);
+        final EditText date          = (EditText) findViewById(R.id.record_date);
         final EditText current_value = (EditText) findViewById(R.id.record_current_value);
         final EditText initial_value = (EditText) findViewById(R.id.record_initial_value);
-        final EditText comment = (EditText) findViewById(R.id.record_comment);
-        Button ok = (Button) findViewById(R.id.record_ok);
+        final EditText comment       = (EditText) findViewById(R.id.record_comment);
+        Button ok     = (Button) findViewById(R.id.record_ok);
         Button cancel = (Button) findViewById(R.id.record_cancel);
 
-        name.setText(counter.getIndex());
+        name.setText(counter.getName());
         date.setText(counter.date_toString());
         current_value.setText(Integer.toString(counter.getCurrentValue()));
         initial_value.setText(Integer.toString(counter.getInitialValue()));
@@ -80,9 +80,6 @@ public class RecordActivity extends AppCompatActivity {
                 intent.putExtra("Counter", counter);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
-                return true;
-            case R.id.reset:
-                counter.reset
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

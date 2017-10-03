@@ -11,13 +11,10 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -35,10 +32,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private static final String FILENAME = "file.sav";
-
-    private ArrayList<Counter> counters = new ArrayList<Counter>();
+    private ArrayList<Counter>  counters = new ArrayList<Counter>();
     CounterAdapter counterAdapter;
-    ListView counterListView;
+    ListView       counterListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +78,7 @@ public class MainActivity extends AppCompatActivity {
             if (counter.getName() == null) {
                 int index = counter.getIndex();
                 counters.remove(index);
-                for (int i = index; i < counters.size(); i++) {
-                    counter = counters.get(i);
-                    counter.setIndex(counter.getIndex() - 1);
-                }
+                reindex_counters(counters, index);
             } else {
                 counters.set(counter.getIndex(), counter);
             }
@@ -94,17 +87,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void reindex_counters(ArrayList<Counter> counters, int index) {
+        Counter counter;
+
+        for (int i = index; i < counters.size(); i++) {
+            counter = counters.get(i);
+            counter.setIndex(counter.getIndex() - 1);
+        }
+    }
+
     private void onclick_add() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         View view = getLayoutInflater().inflate(R.layout.add_dialog, null);
-        final EditText name = (EditText) view.findViewById(R.id.et_name);
-        final EditText value = (EditText) view.findViewById(R.id.et_value);
+        final EditText name    = (EditText) view.findViewById(R.id.et_name);
+        final EditText value   = (EditText) view.findViewById(R.id.et_value);
         final EditText comment = (EditText) view.findViewById(R.id.et_comments);
-        final Button ok = (Button) view.findViewById(R.id.ok);
-        Button cancel = (Button) view.findViewById(R.id.cancel);
+        final Button   ok      = (Button)   view.findViewById(R.id.ok);
+        final Button   cancel  = (Button)   view.findViewById(R.id.cancel);
+
         builder.setView(view);
         final AlertDialog dialog = builder.create();
         dialog.show();
+
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -123,12 +127,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        name.addTextChangedListener(textWatcher);
+        name .addTextChangedListener(textWatcher);
         value.addTextChangedListener(textWatcher);
         ok.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Counter counter = new Counter(name.getText().toString(),
-                                Integer.parseInt(value.getText().toString()), comment.getText().toString(), counters.size());
+                                              Integer.parseInt(value.getText().toString()),
+                                              comment.getText().toString(), counters.size());
                 counters.add(counter);
                 saveInFile();
                 dialog.dismiss();
